@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "SearchEngineServerRPC";
+
+service EngineService{
+	rpc RequestSite(URLRequest) returns (ValidURL);
+	rpc SearchRequest(KeywordRequest) returns (stream URLs);
+}
+
+
+message URLRequest{
+	string Keyword = 1;
+}
+message ValidURL{
+	bool isValid = 1;
+}
+message KeywordRequest{
+	string URL = 1;
+}
+message URLs{
+	string FoundURL = 1;
+}
